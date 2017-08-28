@@ -1,5 +1,10 @@
 Small example showing how to link with a static library using OCaml-Ctypes
 
+
+NOTE: the oasis branch shows how to build the C static library and
+linking with an OCaml executable
+
+
 The static library lives in clib. Build the static lib using:
 
 ```shellscript
