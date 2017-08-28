@@ -15,20 +15,18 @@ let get_platform () =
         | "Darwin" -> OSX
         | _ -> Linux (* Assume linux by default *)
 
-let static_lib_loc =
-  match get_platform () with
-  | OSX -> "/Users/aac31/work/personal/github/ctypes-static-lib-ocamlbuild/clib/libtest.a"
-  | Linux -> "/home/aziem/work/personal/github/ctypes-static-lib-ocamlbuild/clib/libtest.a"
+let static_lib_loc = "clib/libtest.a"
 
 let () =
   dispatch begin function
     | After_rules ->
       begin
-      match get_platform () with
-      | OSX -> 	flag ["link"; "ocaml"; "native"]
-        	  (S[A"-cclib"; A("-Wl,-force_load " ^ static_lib_loc) ; ])
-      | Linux -> flag ["link"; "ocaml"; "native"]
-                   (S[A"-cclib"; A("-Wl,--whole-archive " ^ static_lib_loc) ; A"-cclib"; A"-Wl,--no-whole-archive"; A"-cclib";A"-Wl,-E" ])
+        pdep ["link"] "linkdep" (fun param -> [param]);
+        match get_platform () with
+        | OSX -> 	flag ["link"; "ocaml"; "native"]
+        	    (S[A"-cclib"; A("-Wl,-force_load " ^ static_lib_loc) ; ])
+        | Linux -> flag ["link"; "ocaml"; "native"]
+                     (S[A"-cclib"; A("-Wl,--whole-archive " ^ static_lib_loc) ; A"-cclib"; A"-Wl,--no-whole-archive"; A"-cclib";A"-Wl,-E" ])
       end
     | _ -> ()
   end

@@ -24,4 +24,4 @@ The myocamlbuild.ml file has a variable pointing to the location of the static l
 myocamlbuild.ml contains code to check if the current OS is Linux or
 OSX to set the right linkage flag.
 
-TODO: make ocamlbuild build the C static lib. 
+Ocamlbuild also builds the C static library under clib. 
