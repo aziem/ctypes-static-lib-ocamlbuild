@@ -1,0 +1,17 @@
+OASISFormat:    0.4
+OCamlVersion:   >= 4.01
+Name:          	ctypes-static-lib
+Version:        0.1
+Synopsis:       Ctypes bindings example with C static library
+Authors:        Aziem Chawdhary
+License:        LGPL-2.1 with OCaml linking exception
+Plugins:        DevFiles (0.4), META (0.4)
+BuildTools:     ocamlbuild
+
+Executable test
+  Install: false
+  Path: .
+  MainIs: test.ml
+  BuildDepends: ctypes, ctypes.foreign
+  CompiledObject: native
+
