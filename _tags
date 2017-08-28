@@ -21,5 +21,3 @@ true: annot, bin_annot
 <*.ml{,i,y}>: package(ctypes.foreign)
 # OASIS_STOP
 <*.native>: linkdep(clib/libtest.a)
-<*.{byte,native}>: use_cstub
-<**/*.cmx{x,}a>: use_cstub
