@@ -21,6 +21,7 @@ will build a small OCaml executable which statically links with the static lib i
 
 The myocamlbuild.ml file has a variable pointing to the location of the static lib.
 
-This only works on Linux: OSX will require different incantations passed to its linker.
+myocamlbuild.ml contains code to check if the current OS is Linux or
+OSX to set the right linkage flag.
 
 TODO: make ocamlbuild build the C static lib. 
