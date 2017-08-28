@@ -1,5 +1,5 @@
 (* OASIS_START *)
-(* DO NOT EDIT (digest: 9bd78b75e5e0b109a1abb54bf043b292) *)
+(* DO NOT EDIT (digest: f2a453ea5ea6b411333acff42ab0400a) *)
 module OASISGettext = struct
 (* # 22 "src/oasis/OASISGettext.ml" *)
 
@@ -878,20 +878,25 @@ end
 # 878 "myocamlbuild.ml"
 open Ocamlbuild_plugin;;
 let package_default =
-  {MyOCamlbuildBase.lib_ocaml = []; lib_c = []; flags = []; includes = []}
+  {
+     MyOCamlbuildBase.lib_ocaml = [("test", [], [])];
+     lib_c = [];
+     flags = [];
+     includes = []
+  }
   ;;
 
 let conf = {MyOCamlbuildFindlib.no_automatic_syntax = false}
 
 let dispatch_default = MyOCamlbuildBase.dispatch_default conf package_default;;
 
-# 889 "myocamlbuild.ml"
+# 894 "myocamlbuild.ml"
 (* OASIS_STOP *)
 
 let dispatch = function
   | After_rules ->
-    pdep ["link"] "linkdep" (fun param -> [param]);
-    flag ["link"; "ocaml"] (S[ A"-cclib"; A("-Wl,--whole-archive clib/libtest.a") ; A"-cclib"; A"-Wl,--no-whole-archive"; A"-cclib";A"-Wl,-E"])
+    pdep ["library";"link"] "linkdep" (fun param -> [param]);
+    flag ["ocaml"; "library"; "link"; "linkarchive"] (S[ A"-cclib"; A("-Wl,--whole-archive clib/libtest.a") ; A"-cclib"; A"-Wl,--no-whole-archive"; A"-cclib";A"-Wl,-E"])
   | _ -> ()
 
 let () = Ocamlbuild_plugin.dispatch (fun hook -> dispatch hook; dispatch_default hook)

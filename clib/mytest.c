@@ -1,4 +1,5 @@
+#include <stdio.h>
 
-double mean(double a, double b) {
-  return (a+b)/2;
+void toto(void) {
+  printf("Hello from C\n");
 }

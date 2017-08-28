@@ -1,1 +1,1 @@
-double mean(double, double);
+void toto(void);

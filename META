@@ -1,0 +1,11 @@
+# OASIS_START
+# DO NOT EDIT (digest: da8d8fd7b589775855a4e94e013685d9)
+version = "0.1"
+description = "Ctypes bindings example with C static library"
+archive(byte) = "test.cma"
+archive(byte, plugin) = "test.cma"
+archive(native) = "test.cmxa"
+archive(native, plugin) = "test.cmxs"
+exists_if = "test.cmxa"
+# OASIS_STOP
+

@@ -1,7 +1,4 @@
-open Ctypes
-open Foreign
+external toto_a : unit -> unit = "toto"
 
-let mean = foreign "mean" (float @-> float @-> returning float)
-
-let _ =
-  Printf.printf "%f\n" (mean 2.0 3.0)
+let toto_b () = toto_a ()
+      

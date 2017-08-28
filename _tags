@@ -1,5 +1,5 @@
 # OASIS_START
-# DO NOT EDIT (digest: cf96d8f86003607a96d12201ece0924c)
+# DO NOT EDIT (digest: 9ca6d203d151d5835b6ea46f33ac540b)
 # Ignore VCS directories, you can use the same kind of rule outside
 # OASIS_START/STOP if you want to exclude directories that contains
 # useless stuff for the build process
@@ -14,10 +14,11 @@ true: annot, bin_annot
 ".git": not_hygienic
 "_darcs": -traverse
 "_darcs": not_hygienic
-# Executable test
-"test.native": package(ctypes)
-"test.native": package(ctypes.foreign)
-<*.ml{,i,y}>: package(ctypes)
-<*.ml{,i,y}>: package(ctypes.foreign)
+# Library test
+"test.cmxs": use_test
+# Executable testlib
+"testlib.native": use_test
+<*.ml{,i,y}>: use_test
 # OASIS_STOP
-<*.native>: linkdep(clib/libtest.a)
+<test.cmx{x,}a>: linkdep(clib/libtest.a)
+<test.cmx{x,}a>: linkarchive

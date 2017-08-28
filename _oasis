@@ -8,10 +8,16 @@ License:        LGPL-2.1 with OCaml linking exception
 Plugins:        DevFiles (0.4), META (0.4)
 BuildTools:     ocamlbuild
 
-Executable test
+Library test
   Install: false
   Path: .
-  MainIs: test.ml
-  BuildDepends: ctypes, ctypes.foreign
+  Modules: Test
+  CompiledObject: native
+
+Executable testlib
+  Install: false
+  Path: .
+  MainIs: testlib.ml
+  BuildDepends: test
   CompiledObject: native
 
