@@ -1,3 +1,1 @@
-Small example showing to build a C static lib and link with an OCaml
-executable using Oasis and OCamlBuild
-
+Small example showing how to build a small C static library and static linking with an OCaml library.
