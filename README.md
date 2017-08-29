@@ -1,17 +1,24 @@
-Small example showing how to link with a static library using OCaml-Ctypes
+Small example showing how to link with a static library using
+OCaml-Ctypes. 
 
+The master branch is a pure ocamlbuild solution to build a static C
+lib and building an OCaml executable linking with the C lib.
 
-NOTE: the oasis branch shows how to build the C static library and
-linking with an OCaml executable
+NOTE: There are two other branches:
 
+1. The oasis branch shows how to build the C static library and
+   linking with an OCaml executable using the Oasis build tool.
+   
+2. The oasis-lib branch shows how to build a C static library and an
+   OCaml library which is statically linked against the C lib.
 
-The static library lives in clib. Build the static lib using:
+In the top-level directory:
 
 ```shellscript
-cd clib; make libtest.a
+oasis setup
 ```
 
-Then in the top-level directory:
+followed by:
 
 ```shellscript
 make test.native
@@ -19,9 +26,6 @@ make test.native
 
 will build a small OCaml executable which statically links with the static lib in clib.
 
-The myocamlbuild.ml file has a variable pointing to the location of the static lib.
-
 myocamlbuild.ml contains code to check if the current OS is Linux or
 OSX to set the right linkage flag.
 
-Ocamlbuild also builds the C static library under clib. 
